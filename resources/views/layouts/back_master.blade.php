@@ -1,5 +1,4 @@
 @extends('layouts.back_primary')
-
 @section('back_section')
 
     <!-- Page Wrapper -->

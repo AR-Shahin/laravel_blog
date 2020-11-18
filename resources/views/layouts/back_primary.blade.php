@@ -22,6 +22,7 @@
 </head>
 
 <body id="page-top">
+
 @yield('back_section')
 
 <!-- Bootstrap core JavaScript-->
