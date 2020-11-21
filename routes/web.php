@@ -43,6 +43,11 @@ Route::get('post/edit/{id}','backend\PostController@edit')->name('post.edit');
 Route::post('post/update/{id}','backend\PostController@update')->name('post.update');
 Route::get('post/destroy/{id}','backend\PostController@destroy')->name('post.destroy');
 
+#SiteIdentity Routes
+Route::get('site-identity','backend\SiteController@index')->name('site.identity');
+Route::post('site-identity','backend\SiteController@store')->name('site.identity');
+Route::post('site/update','backend\SiteController@update')->name('site.update');
+
 
 
 
