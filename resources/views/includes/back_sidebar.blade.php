@@ -53,7 +53,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#post" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fa fa-table"></i>
             <span>Post</span>
         </a>
         <div id="post" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -62,7 +62,18 @@
                 <a class="collapse-item" href="{{route('post.index')}}">Posts</a>
             </div>
         </div>
-
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#site" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-globe"></i>
+            <span>Site Identity</span>
+        </a>
+        <div id="site" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('category.index')}}">Logo & Footer</a>
+                <a class="collapse-item" href="{{route('post.index')}}">Social Links</a>
+            </div>
+        </div>
     </li>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

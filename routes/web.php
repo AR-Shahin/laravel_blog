@@ -32,6 +32,17 @@ Route::get('about/destroy/{id}','backend\AboutUsController@destroy')->name('abou
 Route::resource('category','backend\CategoryController')->except(['create']);
 
 #Post Routes
+Route::get('post/index','backend\PostController@index')->name('post.index');
+Route::get('post/create','backend\PostController@create')->name('post.create');
+Route::post('post/create','backend\PostController@store')->name('post.create');
+
+Route::get('post/inactive/{id}','backend\PostController@inactivePost')->name('post.inactive');
+Route::get('post/active/{id}','backend\PostController@activePost')->name('post.active');
+Route::get('post/show/{id}','backend\PostController@show')->name('post.show');
+Route::get('post/edit/{id}','backend\PostController@edit')->name('post.edit');
+Route::post('post/update/{id}','backend\PostController@update')->name('post.update');
+Route::get('post/destroy/{id}','backend\PostController@destroy')->name('post.destroy');
+
 
 
 

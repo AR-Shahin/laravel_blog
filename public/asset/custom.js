@@ -11,7 +11,8 @@ $('#delete_swal').on('click',function (e) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete it!',
+        timer: 9500
     }).then((result) => {
         if(result.isConfirmed) {
             window.location.href = url;
@@ -33,7 +34,8 @@ $('#delete_swal').on('click',function (e) {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, delete it!',
+            timer: 4500
         }).then((result) => {
             if(result.isConfirmed) {
             window.location.href = url;
