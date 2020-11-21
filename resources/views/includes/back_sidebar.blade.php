@@ -71,7 +71,7 @@
         <div id="site" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('site.identity')}}">Logo & Footer</a>
-                <a class="collapse-item" href="{{route('post.index')}}">Social Links</a>
+                <a class="collapse-item" href="{{route('social.link')}}">Social Links</a>
             </div>
         </div>
     </li>

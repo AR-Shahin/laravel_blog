@@ -48,6 +48,12 @@ Route::get('site-identity','backend\SiteController@index')->name('site.identity'
 Route::post('site-identity','backend\SiteController@store')->name('site.identity');
 Route::post('site/update','backend\SiteController@update')->name('site.update');
 
+#SocialLinks Routes
+Route::get('social/link','backend\SocialLinksController@index')->name('social.link');
+Route::post('social/link','backend\SocialLinksController@store')->name('social.link');
+Route::post('social/update','backend\SocialLinksController@update')->name('social.update');
+
+
 
 
 
