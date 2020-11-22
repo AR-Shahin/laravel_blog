@@ -75,6 +75,20 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Users" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-users"></i>
+            <span>Users</span>
+        </a>
+        <div id="Users" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded"></a>
+                <a class="collapse-item" href="{{route('admin.profile')}}">My Profile</a>
+                <a class="collapse-item" href="{{route('admin.update')}}">Update Profile</a>
+                <a class="collapse-item" href="{{route('admin.index')}}">Manage Users</a>
+            </div>
+        </div>
+    </li>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

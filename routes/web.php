@@ -15,10 +15,10 @@ Route::get('single/post','frontend\BlogController@singlePost')->name('single.pos
 //backend routes-------------------------------------------------------
 Route::get('admin/login','backend\LoginController@index')->name('login.admin');
 Route::post('admin/login','backend\LoginController@LoginProcess')->name('login');
+
 Route::group(['middleware' => 'auth'],function (){
     #Auth Routes
     Route::get('admin/logout','backend\LoginController@Logout')->name('admin.logout');
-
 
 #Dashboard Routes
     Route::get('dashboard','backend\DashboardController@index')->name('dashboard');
@@ -58,6 +58,24 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('social/link','backend\SocialLinksController@index')->name('social.link');
     Route::post('social/link','backend\SocialLinksController@store')->name('social.link');
     Route::post('social/update','backend\SocialLinksController@update')->name('social.update');
+
+    #Admins Routes
+    Route::get('admin/index','backend\AdminController@index')->name('admin.index');
+    Route::get('admin/create','backend\AdminController@addNewAdmin')->name('admin.create');
+    Route::post('admin/store','backend\AdminController@storeNewAdmin')->name('admin.store');
+    Route::put('admin/edit/email/{id}','backend\AdminController@editEmail')->name('admin.email.edit');
+
+    Route::get('admin/profile','backend\AdminController@profile')->name('admin.profile');
+    Route::get('admin/update','backend\AdminController@update')->name('admin.update');
+    Route::post('admin/update','backend\AdminController@updateProfile')->name('admin.update');
+    Route::post('admin/change/password','backend\AdminController@changePassword')->name('admin.change.password');
+
+    //admin status
+    Route::get('admin/block/{id}','backend\AdminController@blockAdmin')->name('admin.block');
+    Route::get('admin/unblock/{id}','backend\AdminController@unblockAdmin')->name('admin.unblock');
+    Route::get('admin/promote/{id}','backend\AdminController@promoteAdmin')->name('admin.promote');
+    Route::get('admin/demote/{id}','backend\AdminController@demoteAdmin')->name('admin.demote');
+    Route::get('admin/delete/{id}','backend\AdminController@deleteAdmin')->name('admin.delete');
 
 });
 
