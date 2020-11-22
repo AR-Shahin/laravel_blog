@@ -12,6 +12,7 @@ use function dd;
 use function explode;
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use function implode;
 use function json_decode;
@@ -29,7 +30,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PostController extends Controller
 {
     public function index(){
-        $this->data['posts'] = Post::with('category','tags')->latest()->get();
+        $this->data['posts'] = Post::with('category','tags','admin')->latest()->get();
         return view('backend.post.index',$this->data);
     }
 
@@ -50,7 +51,7 @@ class PostController extends Controller
         $post->title = ucwords($request->title);
         $post->slug = Str::slug($request->title,'-');
         $post->category_id = $request->cat_id;
-        $post->admin_id = 1;
+        $post->admin_id = Auth::user()->id;
         $post->short_des = $request->short_des;
         $post->long_des = $request->long_des;
         $post->count = 0;

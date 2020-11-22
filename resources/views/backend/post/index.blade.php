@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->category->title}}</td>
-                                    <td>Shahin</td>
+                                    <td>{{$post->admin->name}}</td>
                                     <td><img src="{{asset($post->image)}}" alt="" width="80px"></td>
                                     <td>{{$post->count}}</td>
                                     <td>{!! $post->status == 1? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-warning">Inactive</span>'!!}</td>

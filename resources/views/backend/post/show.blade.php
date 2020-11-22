@@ -20,7 +20,7 @@
                         </tr>
                         <tr>
                             <th>Author</th>
-                            <td>shain</td>
+                            <td>{{$post->admin->name}}</td>
                         </tr>
                         <tr>
                             <th>Tags</th>
