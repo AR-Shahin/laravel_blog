@@ -111,7 +111,6 @@ class SliderController extends Controller
 
 
     public function sliderInactive($id){
-
         $update = Slider::find($id);
         $update->status = 0;
         if($update->save()){

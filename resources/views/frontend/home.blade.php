@@ -5,42 +5,17 @@
 
     <!-- Hero Section-->
     <div class="owl-carousel hero_slider">
-        <section style="background: url({{asset('frontend')}}/img/hero.jpg); background-size: cover; background-position: center center" class="hero wow animate__animated animate__fadeInTopLeft">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h1 class="bg-dark p-3">Bootstrap 4 Blog - A free template by Bootstrap Temple</h1><a href="#" class="hero-link">Discover More</a>
-                    </div>
-                </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
-            </div>
-        </section>
-        <section style="background: url({{asset('frontend')}}/img/blog-2.jpg); background-size: cover; background-position: center center" class="hero wow animate__animated animate__zoomIn" data-wow-delay=".3s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h1 class="bg-dark p-3">Bootstrap 4 Blog - A free template by Bootstrap Temple</h1><a href="#" class="hero-link">Discover More</a>
-                    </div>
-                </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
-            </div>
-        </section>
-        <section style="background: url({{asset('frontend')}}/img/hero2.jpg); background-size: cover; background-position: center center" class="hero wow animate__animated animate__zoomIn" data-wow-delay=".3s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h1 class="bg-dark p-3">Bootstrap 5 Blog - Anisur Rahaman Shahin Temple</h1><a href="#" class="hero-link">Discover More</a>
-                    </div>
-                </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
-            </div>
-        </section>
-        <section style="background: url({{asset('frontend')}}/img/hero3.jpg); background-size: cover; background-position: center center" class="hero">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <h1 class="bg-dark p-3" >A free template by Bootstrap Temple</h1><a href="#" class="hero-link">Discover More</a>
-                    </div>
-                </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
-            </div>
-        </section>
+        @foreach($sliders as $slider)
+            <section style="background: url({{asset($slider->image)}}); background-size: cover; background-position: center center" class="hero wow animate__animated animate__fadeInTopLeft">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <h1 class="bg-dark p-3">{{$slider->heading}}</h1><a href="#" class="hero-link">Discover More</a>
+                        </div>
+                    </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+                </div>
+            </section>
+        @endforeach
     </div>
     <!-- Intro Section-->
     <section class="intro">
@@ -48,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h2 class="h3">About Us</h2>
-                    <p class="text-big">Place a nice <strong>introduction</strong> here <strong>to catch reader's attention</strong>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderi.</p>
+                    <p class="text-big">{{$about->text}}</p>
                 </div>
             </div>
         </div>
@@ -56,68 +31,53 @@
     <section class="featured-posts no-padding-top">
         <div class="container">
             <!-- Post-->
-            <div class="row d-flex align-items-stretch">
-                <div class="text col-lg-7">
-                    <div class="text-inner d-flex align-items-center">
-                        <div class="content">
-                            <header class="post-header">
-                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
-                                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar"><img src="{{asset('frontend')}}/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><span>John Doe</span></div></a>
-                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                <div class="comments"><i class="icon-comment"></i>12</div>
-                            </footer>
+            <?php $i =0; ?>
+            @foreach($posts as $post)
+                @if($i++ % 2 ==0)
+                    <div class="row d-flex align-items-stretch">
+                        <div class="text col-lg-7">
+                            <div class="text-inner d-flex align-items-center">
+                                <div class="content">
+                                    <header class="post-header">
+                                        <div class="category"><a href="#"></a><a href="#">{{$post->category->title}}</a></div><a href="post.html">
+                                            <h2 class="h4">{{$post->title}}</h2></a>
+                                    </header>
+                                    <p>{{$post->short_des}}</p>
+                                    <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                            <div class="avatar"><img src="{{asset($post->admin->image)}}" alt="..." class="img-fluid"></div>
+                                            <div class="title"><span>{{($post->admin->name)}}</span></div></a>
+                                        <div class="date"><i class="icon-clock"></i> {{($post->created_at->diffForHumans())}}</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image col-lg-5"><img src="{{asset($post->image)}}" alt="..."></div>
+        </div>
+                @else
+                    <div class="row d-flex align-items-stretch">
+                        <div class="image col-lg-5"><img src="{{asset($post->image)}}" alt="..."></div>
+                        <div class="text col-lg-7">
+                            <div class="text-inner d-flex align-items-center">
+                                <div class="content">
+                                    <header class="post-header">
+                                        <div class="category"><a href="#">{{$post->category->title}}</a></div><a href="post.html">
+                                            <h2 class="h4">{{$post->title}}</h2></a>
+                                    </header>
+                                    <p>{{$post->short_des}}</p>
+                                    <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                            <div class="avatar"><img src="{{asset($post->admin->image)}}" alt="..." class="img-fluid"></div>
+                                            <div class="title"><span>{{asset($post->admin->name)}}</span></div></a>
+                                        <div class="date"><i class="icon-clock"></i> {{($post->created_at->diffForHumans())}}</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </footer>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="image col-lg-5"><img src="{{asset('frontend')}}/img/featured-pic-1.jpeg" alt="..."></div>
-            </div>
-            <!-- Post        -->
-            <div class="row d-flex align-items-stretch">
-                <div class="image col-lg-5"><img src="{{asset('frontend')}}/img/featured-pic-2.jpeg" alt="..."></div>
-                <div class="text col-lg-7">
-                    <div class="text-inner d-flex align-items-center">
-                        <div class="content">
-                            <header class="post-header">
-                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
-                                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar"><img src="{{asset('frontend')}}/img/avatar-2.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><span>John Doe</span></div></a>
-                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                <div class="comments"><i class="icon-comment"></i>12</div>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Post                            -->
-            <div class="row d-flex align-items-stretch">
-                <div class="text col-lg-7">
-                    <div class="text-inner d-flex align-items-center">
-                        <div class="content">
-                            <header class="post-header">
-                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
-                                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
-                            </header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                    <div class="avatar"><img src="{{asset('frontend')}}/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><span>John Doe</span></div></a>
-                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                <div class="comments"><i class="icon-comment"></i>12</div>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-                <div class="image col-lg-5"><img src="{{asset('frontend')}}/img/featured-pic-3.jpeg" alt="..."></div>
-            </div>
+            @endif
+        @endforeach
+        <!-- Post        -->
         </div>
     </section>
     <!-- Divider Section-->
@@ -138,39 +98,19 @@
                 <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </header>
             <div class="row">
+                @foreach($Lposts as $post)
                 <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.html"><img src="{{asset('frontend')}}/img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
+                    <div class="post-thumbnail"><a href="post.html"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
                     <div class="post-details">
                         <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Business</a></div>
+                            <div class="date">{{$post->created_at->format('d F | Y')}}</div>
+                            <div class="category"><a href="#">{{$post->category->title}}</a></div>
                         </div><a href="post.html">
-                            <h3 class="h4">Ways to remember your important ideas</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            <h3 class="h4">{{$post->title}}</h3></a>
+                        <p class="text-muted">{{$post->short_des}}</p>
                     </div>
                 </div>
-                <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.html"><img src="{{asset('frontend')}}/img/blog-2.jpg" alt="..." class="img-fluid"></a></div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Technology</a></div>
-                        </div><a href="post.html">
-                            <h3 class="h4">Diversity in Engineering: Effect on Questions</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
-                <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.html"><img src="{{asset('frontend')}}/img/blog-3.jpg" alt="..." class="img-fluid"></a></div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Financial</a></div>
-                        </div><a href="post.html">
-                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    </div>
-                </div>
+                    @endforeach
             </div>
         </div>
     </section>

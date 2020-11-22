@@ -49,9 +49,9 @@
                                     </td>
                                     <td class="text-right">
                                         @if($slider->status == 1)
-                                            <a href="" class="btn btn-warning btn-sm"><i class="fa fa-angle-down"></i> Inactive</a>
+                                            <a href="{{route('slider.inactive',['id' =>$slider->id])}}" class="btn btn-warning btn-sm"><i class="fa fa-angle-down"></i> Inactive</a>
                                         @else
-                                            <a href="" class="btn btn-success btn-sm"><i class="fa fa-angle-up"></i> Active</a>
+                                            <a href="{{route('slider.active',['id' =>$slider->id])}}" class="btn btn-success btn-sm"><i class="fa fa-angle-up"></i> Active</a>
                                         @endif
                                         <a type="button"  data-toggle="modal" data-target="#edit_{{$slider->id}}" class="btn btn-primary btn-sm text-light"><i class="fa fa-edit"></i> Edit</a>
                                         <form  action="{{route('slider.destroy',['slider' => $slider->id])}}" class="d-inline" method="post">
