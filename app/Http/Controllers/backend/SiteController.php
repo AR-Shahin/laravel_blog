@@ -11,6 +11,10 @@ use function view;
 
 class SiteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('logout');
+    }
     public function index()
     {
         $this->data['count'] = SiteIdentity::count();

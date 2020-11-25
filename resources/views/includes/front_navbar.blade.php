@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title','Laravel Blog Website') | Laravel Blog Website' </title>
+    <title>@yield('title','Laravel Blog Website') | Laravel Blog Website </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -64,12 +64,23 @@
                     </li>
                     <li class="nav-item"><a href="{{route('single.post')}}" class="nav-link ">Post</a>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+                    <li class="nav-item"><a href="{{route('contact')}}" class="nav-link ">Contact</a>
                     </li>
                 </ul>
                 <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
-                <ul class="langs navbar-text"><a href="#" class="active">Login</a><span>           </span><a href="#">Register</a></ul>
+                <ul class="langs navbar-text"><a href="{{route('users.login')}}" class="active">Login</a><span>           </span><a href="{{route('users.registration')}}">Register</a></ul>
             </div>
         </div>
     </nav>
 </header>
+
+<div class="container-fluid">
+    @if(session('front_message'))
+        <div class=" mt-5 pt-5 alert alert-{{ session('type') }} alert-dismissible fade show" role="alert">
+            {{ session('front_message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+</div>

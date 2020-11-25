@@ -5,12 +5,27 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('blog-login','backend\LoginController@index')->name('login');
+Route::get('control_panel','backend\LoginController@index')->name('control_panel');
 
 //frontend routes---------------------------------------------
 Route::get('/','frontend\HomeController@index')->name('home');
 Route::get('blog','frontend\BlogController@index')->name('blog');
-Route::get('single/post','frontend\BlogController@singlePost')->name('single.post');
+Route::get('post/{slug?}','frontend\BlogController@singlePost')->name('single.post');
+Route::get('log','frontend\UserController@logout')->name('logout');
 
+
+#Contact Routes
+Route::get('contact','frontend\ContactController@index')->name('contact');
+
+
+#Users Routes
+Route::prefix('users')->group(function () {
+    Route::get('profile','frontend\UserController@index')->name('users.profile')->middleware('auth:user');
+    Route::get('login','frontend\UserController@login')->name('users.login');
+    Route::post('login','frontend\UserController@loginProcess')->name('user.login');
+    Route::get('registration','frontend\UserController@registration')->name('users.registration');
+    Route::post('registration','frontend\UserController@store')->name('users.registration');
+});
 
 //backend routes-------------------------------------------------------
 Route::get('admin/login','backend\LoginController@index')->name('login.admin');

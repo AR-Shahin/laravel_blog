@@ -39,7 +39,7 @@
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
-                                        <div class="category"><a href="#"></a><a href="#">{{$post->category->title}}</a></div><a href="post.html">
+                                        <div class="category"><a href="{{route('single.post',$post->slug)}}"></a><a href="#">{{$post->category->title}}</a></div><a href="{{route('single.post',$post->slug)}}">
                                             <h2 class="h4">{{$post->title}}</h2></a>
                                     </header>
                                     <p>{{$post->short_des}}</p>
@@ -61,13 +61,13 @@
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
-                                        <div class="category"><a href="#">{{$post->category->title}}</a></div><a href="post.html">
+                                        <div class="category"><a href="{{route('single.post',$post->slug)}}">{{$post->category->title}}</a></div><a href="{{route('single.post',$post->slug)}}">
                                             <h2 class="h4">{{$post->title}}</h2></a>
                                     </header>
                                     <p>{{$post->short_des}}</p>
-                                    <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                    <footer class="post-footer d-flex align-items-center"><a href="{{route('single.post',$post->slug)}}" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="{{asset($post->admin->image)}}" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>{{asset($post->admin->name)}}</span></div></a>
+                                            <div class="title"><span>{{$post->admin->name}}</span></div></a>
                                         <div class="date"><i class="icon-clock"></i> {{($post->created_at->diffForHumans())}}</div>
                                         <div class="comments"><i class="icon-comment"></i>12</div>
                                     </footer>
@@ -100,12 +100,12 @@
             <div class="row">
                 @foreach($Lposts as $post)
                 <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.html"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
+                    <div class="post-thumbnail"><a href="{{route('single.post',$post->slug)}}"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
                     <div class="post-details">
                         <div class="post-meta d-flex justify-content-between">
                             <div class="date">{{$post->created_at->format('d F | Y')}}</div>
-                            <div class="category"><a href="#">{{$post->category->title}}</a></div>
-                        </div><a href="post.html">
+                            <div class="category"><a href="{{route('single.post',$post->slug)}}">{{$post->category->title}}</a></div>
+                        </div><a href="{{route('single.post',$post->slug)}}">
                             <h3 class="h4">{{$post->title}}</h3></a>
                         <p class="text-muted">{{$post->short_des}}</p>
                     </div>

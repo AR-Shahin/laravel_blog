@@ -30,7 +30,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PostController extends Controller
 {
     public function index(){
-        $this->data['posts'] = Post::with('category','tags','admin')->latest()->get();
+        $this->data['posts'] = Post::with('category','tags','admin')->orderBy('id','desc')->get();
         return view('backend.post.index',$this->data);
     }
 
