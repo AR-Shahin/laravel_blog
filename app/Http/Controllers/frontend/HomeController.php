@@ -14,6 +14,7 @@ use App\SocialLink;
 class HomeController extends Controller
 {
     public function index(){
+        $this->data['main_menu'] = 'Home';
         $this->data['sliders'] = Slider::where('status',1)->latest()->get();
         $this->data['about'] = aboutUs::get()->first();
         $this->data['site'] = SiteIdentity::get()->first();

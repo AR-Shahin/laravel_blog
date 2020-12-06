@@ -68,7 +68,7 @@
                                     <div class="title"><strong>{{$post->title}}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> {{$post->count}}</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
+                                            <div class="comments"><i class="icon-comment"></i>{{$post->comments->count()}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                         <h3 class="h6">Categories</h3>
                     </header>
                     @foreach($categories as $cat)
-                        <div class="item d-flex justify-content-between"><a href="#">{{$cat->title}}</a><span>{{$cat->countTotalPost->count()}}</span></div>
+                        <div class="item d-flex justify-content-between"><a href="{{route('cat.post',[$cat->title])}}">{{$cat->title}}</a><span>{{$cat->countTotalPost->count()}}</span></div>
                     @endforeach
                 </div>
                 <!-- Widget [Tags Cloud Widget]-->
@@ -92,7 +92,7 @@
                     </header>
                     <ul class="list-inline">
                         @foreach($tags as $tag)
-                            <li class="list-inline-item"><a href="{{$tag->tag}}" class="tag">#{{$tag->tag}}</a></li>
+                            <li class="list-inline-item"><a href="{{route('tag.post',$tag->tag)}}" class="tag">#{{$tag->tag}}</a></li>
                         @endforeach
                     </ul>
                 </div>

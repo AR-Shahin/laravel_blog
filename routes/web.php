@@ -11,14 +11,18 @@ Route::get('control_panel','backend\LoginController@index')->name('control_panel
 Route::get('/','frontend\HomeController@index')->name('home');
 Route::get('blog','frontend\BlogController@index')->name('blog');
 Route::get('single-post/{slug?}','frontend\BlogController@singlePost')->name('single.post');
-Route::get('log','frontend\UserController@logout')->name('logout');
+//Route::get('log','frontend\UserController@logout')->name('logout');
+
+Route::get('category/{cat_name}','frontend\BlogController@categoryWisePost')->name('cat.post');
+Route::get('tag/{tag_name}','frontend\BlogController@tagWisePost')->name('tag.post');
 
 
 #Contact Routes
 Route::get('contact','frontend\ContactController@index')->name('contact');
 Route::post('storeMailFromUsers','frontend\ContactController@storeMailFromUsers')->name('storeMailFromUsers');
 
-
+#Comment Routes
+Route::post('store/comment','frontend\CommentController@commentStore')->name('store.comment');
 #Users Routes
 Route::prefix('users')->group(function () {
     Route::get('profile','frontend\UserController@index')->name('users.profile')->middleware('auth:user');
