@@ -62,13 +62,32 @@
                     </li>
                     <li class="nav-item"><a href="{{route('blog')}}" class="nav-link ">Blog</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('single.post')}}" class="nav-link ">Post</a>
-                    </li>
                     <li class="nav-item"><a href="{{route('contact')}}" class="nav-link ">Contact</a>
                     </li>
+                    @if(Auth::guard('user')->check())
+                    <li class="nav-item"><a href="{{route('users.profile')}}" class="nav-link ">Profile</a>
+                    </li>
+                        @endif
+
                 </ul>
                 <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
-                <ul class="langs navbar-text"><a href="{{route('users.login')}}" class="active">Login</a><span>           </span><a href="{{route('users.registration')}}">Register</a></ul>
+                <ul class="langs navbar-text">
+                    @guest('user')
+                    <a href="{{route('users.login')}}" class="active">Login</a>
+                    <a href="{{route('users.registration')}}">Register</a>
+                    @endguest
+                    @if(Auth::guard('user')->check())
+                        <a class="dropdown-item" href="{{ route('user.logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    @endif
+                </ul>
             </div>
         </div>
     </nav>

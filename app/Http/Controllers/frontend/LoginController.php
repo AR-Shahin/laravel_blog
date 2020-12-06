@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use App\SiteIdentity;
+use App\SocialLink;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -26,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/home';
+    protected $redirectTo = 'users/profile';
 
     /**
      * Create a new controller instance.
@@ -35,21 +38,21 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:user')->except('logout');
+        $this->middleware('guest')->except('logout');
+        $this->data['site'] = SiteIdentity::get()->first();
+        $this->data['link'] = SocialLink::get()->first();
     }
 
-    public function showLoginForm()
-    {
-        if (Auth::id()) {
-            return redirect()->back();
-        }else{
-            return view('frontend.user.login',$this->data);
-        }
-
+    public function showLoginForm(){
+        return view('frontend.user.login',$this->data);
     }
-
     protected function guard()
     {
         return Auth::guard('user');
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('user')->logout();
+        return redirect()->route('users.login');
     }
 }

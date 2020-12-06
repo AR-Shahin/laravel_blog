@@ -29,6 +29,15 @@ class HomeController extends Controller
             ->take(3)
             ->latest()
             ->get();
+
+        $max = $this->data['max'] = Post::max('count');
+        $low = $max -3;
+        $this->data['top_posts'] = Post::whereBetween('count', [$low, $max])
+            //->max('count')
+            ->where('status',1)
+            ->take(3)
+            ->inRandomOrder()
+            ->get();
        // return $this->data;
         return view('frontend.home',$this->data);
     }

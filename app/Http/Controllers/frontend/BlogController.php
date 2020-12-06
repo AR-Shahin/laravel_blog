@@ -17,6 +17,14 @@ class BlogController extends Controller
     {
         $this->data['site'] = SiteIdentity::get()->first();
         $this->data['link'] = SocialLink::get()->first();
+        $max = $this->data['max'] = Post::max('count');
+        $low = $max -3;
+        $this->data['top_posts'] = Post::whereBetween('count', [$low, $max])
+            //->max('count')
+            ->where('status',1)
+            ->take(3)
+            ->inRandomOrder()
+            ->get();
     }
     public function index(){
         $this->data['posts'] = Post::with('category','admin','tags')
@@ -33,6 +41,7 @@ class BlogController extends Controller
     }
 
     public function singlePost($slug){
+        Post::where('slug',$slug)->increment('count');
         $this->data['categories'] = Category::with('countTotalPost')->latest()->get();
         $this->data['tags'] = Tag::all()->unique('tag');
         $this->data['post'] = Post::with('category','admin','tags')->where('slug',$slug)

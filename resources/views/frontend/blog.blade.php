@@ -1,7 +1,7 @@
 @extends('layouts.front_master')
 @section('title','Blog')
 @section('main_section')
-    <div class="container mt-5">
+    <div class="container mt-5 pt-2">
         <div class="row">
             <!-- Latest Posts -->
             <main class="posts-listing col-lg-8">
@@ -10,12 +10,12 @@
                         <!-- post -->
                         @foreach($posts as $post)
                             <div class="post col-xl-6">
-                                <div class="post-thumbnail"><a href="post.html"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
+                                <div class="post-thumbnail"><a href="{{route('single.post',$post->slug)}}"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">{{$post->created_at->format('d F | Y')}}</div>
                                         <div class="category"><a href="#">{{$post->category->title}}</a></div>
-                                    </div><a href="post.html">
+                                    </div><a href="{{route('single.post',$post->slug)}}">
                                         <h3 class="h4">{{$post->title}}</h3></a>
                                     <p class="text-muted">{{$post->short_des}}</p>
                                     <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -62,7 +62,7 @@
                     </header>
                     <div class="blog-posts">
                         @foreach($Lposts as $post)
-                            <a href="#">
+                            <a href="{{route('single.post',$post->slug)}}">
                                 <div class="item d-flex align-items-center">
                                     <div class="image"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></div>
                                     <div class="title"><strong>{{$post->title}}</strong>

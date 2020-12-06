@@ -16,15 +16,12 @@ class UserController extends Controller
 {
     public function __construct()
     {
-         //$this->middleware('guest:user')->except('logout');
+         $this->middleware('auth:user')->except('logout');
         $this->data['site'] = SiteIdentity::get()->first();
         $this->data['link'] = SocialLink::get()->first();
     }
     public function index(){
         return view('frontend.user.index',$this->data);
-    }
-    public function login(){
-        return view('frontend.user.login',$this->data);
     }
     public function registration(){
         return view('frontend.user.register',$this->data);
@@ -58,22 +55,25 @@ class UserController extends Controller
         }
     }
 
-    public function loginProcess(Request $request){
-        $request->validate(
-            [
-                'email' =>['required'],
-                'password' =>'required'
-            ]
-        );
 
-        if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
-              return redirect()->route('users.profile');
-        }
-        $this->setErrorMessageFront('Error password');
-        return redirect()->route('users.login');
-    }
-    public function logout(){
-        Auth::guard('guest:user')->logout();
-        return route('/');
-    }
+
+
+//    public function loginProcess(Request $request){
+//        $request->validate(
+//            [
+//                'email' =>['required'],
+//                'password' =>'required'
+//            ]
+//        );
+//
+//        if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
+//              return redirect()->route('users.profile');
+//        }
+//        $this->setErrorMessageFront('Error password');
+//        return redirect()->route('users.login');
+//    }
+//    public function logout(){
+//        Auth::guard('guest:user')->logout();
+//        return route('/');
+//    }
 }

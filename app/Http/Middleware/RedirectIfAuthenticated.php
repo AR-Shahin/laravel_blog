@@ -18,7 +18,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+            if (Auth::guard('user')->check()) {
+                return redirect()->route('users.profile');
+            } elseif (Auth::guard('web')->check()) {
             return redirect(RouteServiceProvider::HOME);
         }
 

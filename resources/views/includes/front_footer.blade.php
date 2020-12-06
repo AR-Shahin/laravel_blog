@@ -35,19 +35,15 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="latest-posts"><a href="#">
+                <div class="latest-posts">
+                    @foreach($top_posts as $tp)
+                    <a href="{{route('single.post',$tp->slug)}}">
                         <div class="post d-flex align-items-center">
-                            <div class="image"><img src="{{asset('frontend')}}/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a><a href="#">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="{{asset('frontend')}}/img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a><a href="#">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="{{asset('frontend')}}/img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a></div>
+                            <div class="image"><img src="{{asset($tp->image)}}" alt="..." class="img-fluid"></div>
+                            <div class="title"><strong>{{$tp->title}}</strong><span class="date last-meta">{{$tp->created_at->format('F j, Y')}}</span></div>
+                        </div></a>
+                        @endforeach
+                </div>
             </div>
         </div>
     </div>
