@@ -17,7 +17,8 @@
     <div class="container">
         <div class="row mt-4 mb-4 card">
             <div class="col-12 col-md-7 card-body">
-                <form action="">
+                <form action="{{route('storeMailFromUsers')}}" method="post">
+                    @csrf
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
                         <span class="text-danger">{{($errors->has('name'))? ($errors->first('name')) : ''}}</span>

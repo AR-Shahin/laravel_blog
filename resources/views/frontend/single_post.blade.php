@@ -130,7 +130,10 @@
                         <h3 class="h6">Categories</h3>
                     </header>
                     @foreach($categories as $cat)
-                        <div class="item d-flex justify-content-between"><a href="#">{{$cat->title}}</a><span>{{$cat->countTotalPost->count()}}</span></div>
+                        <div class="item d-flex justify-content-between">
+                            <a href="#">{{$cat->title}}</a>
+                            <a>{{$cat->countTotalPost->count()}}</a>
+                        </div>
                     @endforeach
                 </div>
                 <!-- Widget [Tags Cloud Widget]-->

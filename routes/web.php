@@ -6,21 +6,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('blog-login','backend\LoginController@index')->name('login');
 Route::get('control_panel','backend\LoginController@index')->name('control_panel');
+Route::get('control_panel','backend\LoginController@index')->name('control_panel');
 
 //frontend routes---------------------------------------------
 Route::get('/','frontend\HomeController@index')->name('home');
 Route::get('blog','frontend\BlogController@index')->name('blog');
-Route::get('post/{slug?}','frontend\BlogController@singlePost')->name('single.post');
+Route::get('single-post/{slug?}','frontend\BlogController@singlePost')->name('single.post');
 Route::get('log','frontend\UserController@logout')->name('logout');
 
 
 #Contact Routes
 Route::get('contact','frontend\ContactController@index')->name('contact');
+Route::post('storeMailFromUsers','frontend\ContactController@storeMailFromUsers')->name('storeMailFromUsers');
 
 
 #Users Routes
 Route::prefix('users')->group(function () {
-    Route::get('profile','frontend\UserController@index')->name('users.profile')->middleware('auth:user');
+    Route::get('profile','frontend\UserController@index')->name('users.profile');
+
     Route::get('login','frontend\UserController@login')->name('users.login');
     Route::post('login','frontend\UserController@loginProcess')->name('user.login');
     Route::get('registration','frontend\UserController@registration')->name('users.registration');
@@ -28,12 +31,12 @@ Route::prefix('users')->group(function () {
 });
 
 //backend routes-------------------------------------------------------
-Route::get('admin/login','backend\LoginController@index')->name('login.admin');
-Route::post('admin/login','backend\LoginController@LoginProcess')->name('login');
-
+//Route::get('admin/login','backend\LoginController@index')->name('login.admin');
+Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::group(['middleware' => 'auth'],function (){
     #Auth Routes
-    Route::get('admin/logout','backend\LoginController@Logout')->name('admin.logout');
+    Route::post('admin/logout','Auth\LoginController@logout')->name('admin.logout');
 
 #Dashboard Routes
     Route::get('dashboard','backend\DashboardController@index')->name('dashboard');
@@ -93,7 +96,3 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('admin/delete/{id}','backend\AdminController@deleteAdmin')->name('admin.delete');
 
 });
-
-
-
-

@@ -23,7 +23,7 @@
                             <th>Role</th>
                             <td>
                                 @if($admin->status == 0)
-                                    <span class="badge badge-info">Salesman</span>
+                                    <span class="badge badge-info">Editor</span>
                                 @elseif($admin->status == 1)
                                     <span class="badge badge-success">Admin</span>
                                 @elseif($admin->status == 3)
@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <th>Joined Date</th>
-                            <td>{{ucwords($admin->created_at)}}</td>
+                            <td>{{ucwords($admin->created_at->format('d-m-Y'))}}</td>
                         </tr>
                         <tr>
                             <th>Last Profile Updated </th>

@@ -19,14 +19,17 @@ class HomeController extends Controller
         $this->data['site'] = SiteIdentity::get()->first();
         $this->data['link'] = SocialLink::get()->first();
         $this->data['posts'] = Post::with('category','tags','admin')
+            ->where('status',1)
             ->inRandomOrder()
             ->take(3)
             ->latest()
             ->get();
         $this->data['Lposts'] = Post::with('category','tags','admin')
+            ->where('status',1)
             ->take(3)
             ->latest()
             ->get();
+       // return $this->data;
         return view('frontend.home',$this->data);
     }
 }

@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h2 class="h3">About Us</h2>
-                    <p class="text-big">{{$about->text}}</p>
+                    <p class="text-big">{{($about->text)}}</p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
-                                        <div class="category"><a href="{{route('single.post',$post->slug)}}"></a><a href="#">{{$post->category->title}}</a></div><a href="{{route('single.post',$post->slug)}}">
+                                        <div class="category"><a href="{{route('single.post',$post->slug)}}"></a><a href="">{{$post->category->title}}</a></div><a href="{{route('single.post',['slug' => $post->slug])}}">
                                             <h2 class="h4">{{$post->title}}</h2></a>
                                     </header>
                                     <p>{{$post->short_des}}</p>

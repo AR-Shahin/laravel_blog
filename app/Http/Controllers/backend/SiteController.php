@@ -33,8 +33,8 @@ class SiteController extends Controller
         $logo = $request->file('logo');
         $logo_ext = $logo->extension();
         $name_gen = hexdec(uniqid()) . '.' . $logo_ext;
-        $last_image = 'uploads/site/' . $name_gen;
-        $upload = 'uploads/site/';
+        $last_image = 'images/site/' . $name_gen;
+        $upload = 'images/site/';
         $site = new SiteIdentity();
         $site->logo = $last_image;
         $site->footer_txt = $request->footer_txt;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use function redirect;
 use function view;
 use App\Http\Requests\AddAdminRequest;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use App\Http\Requests\ChangePassword;
 class AdminController extends Controller
 {
     public function index(){
+        if(Auth::user()->status == 0) return redirect()->back();
         $this->data['admins'] = Admin::where('status', '!=' ,4)->latest()->get();
         return view('backend.admin.index',$this->data);
     }

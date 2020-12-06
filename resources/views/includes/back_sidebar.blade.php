@@ -85,7 +85,9 @@
             <div class="bg-white py-2 collapse-inner rounded"></a>
                 <a class="collapse-item" href="{{route('admin.profile')}}">My Profile</a>
                 <a class="collapse-item" href="{{route('admin.update')}}">Update Profile</a>
+                @if(Auth::user()->status == 1)
                 <a class="collapse-item" href="{{route('admin.index')}}">Manage Users</a>
+                    @endif
             </div>
         </div>
     </li>
