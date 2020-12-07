@@ -9,9 +9,15 @@ use Illuminate\Support\Str;
 use function redirect;
 use function ucwords;
 use function view;
-
+use App\Contact;
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Post';
+        $this->data['sub_menu'] = 'Cat';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
     /**
      * Display a listing of the resource.
      *

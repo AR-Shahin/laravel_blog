@@ -7,9 +7,16 @@ use App\SocialLink;
 use Illuminate\Http\Request;
 use function redirect;
 use function view;
+use App\Contact;
 
 class SocialLinksController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Site';
+        $this->data['sub_menu'] = 'Social';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
     public function index(){
         $this->data['count'] = SocialLink::count();
         $this->data['links'] = SocialLink::get();

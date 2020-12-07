@@ -94,7 +94,7 @@
                                         <div class="title"><strong>{{$post->title}}</strong>
                                             <div class="d-flex align-items-center">
                                                 <div class="views"><i class="icon-eye"></i> {{$post->count}}</div>
-                                                <div class="comments"><i class="icon-comment"></i>12</div>
+                                                <div class="comments"><i class="icon-comment"></i>{{$post->comments->count()}}</div>
                                             </div>
                                         </div>
                                     </div>

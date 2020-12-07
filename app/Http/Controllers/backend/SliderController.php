@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use function redirect;
 use function unlink;
 use Carbon\Carbon;
+use App\Contact;
 
 class SliderController extends Controller
 {
@@ -17,6 +18,12 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Slider';
+        $this->data['sub_menu'] = '';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
     public function index()
     {
         $this->data['sliders'] = Slider::latest()->get();

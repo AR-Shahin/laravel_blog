@@ -25,10 +25,18 @@ use function unlink;
 use function var_dump;
 use function var_export;
 use function view;
+use App\Contact;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Post';
+        $this->data['sub_menu'] = 'Post';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
+
     public function index(){
         $this->data['posts'] = Post::with('category','tags','admin')->orderBy('id','desc')->get();
         return view('backend.post.index',$this->data);

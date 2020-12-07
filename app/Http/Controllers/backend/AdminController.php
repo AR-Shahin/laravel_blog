@@ -12,8 +12,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use App\Http\Requests\ChangePassword;
+use App\Contact;
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
+
     public function index(){
         if(Auth::user()->status == 0) return redirect()->back();
         $this->data['admins'] = Admin::where('status', '!=' ,4)->latest()->get();
@@ -21,7 +29,7 @@ class AdminController extends Controller
     }
     public function addNewAdmin(){
         if(Auth::user()->status == 1) {
-            $this->data['sub_menu'] = 'Admins';
+            $this->data['sub_menu'] = 'Users';
             return view('backend.admin.register', $this->data);
         }else{
             return redirect()->route('dashboard');
@@ -121,6 +129,7 @@ class AdminController extends Controller
     //profile
 
     public function profile(){
+        $this->data['sub_menu'] = 'Profile';
         $this->data['admin'] = Admin::find(Auth::user()->id);
         return view('backend.admin.profile',$this->data);
     }

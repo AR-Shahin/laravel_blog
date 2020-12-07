@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use function redirect;
 use function view;
+use App\Contact;
 
 class AboutUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['main_menu'] = 'About';
+        $this->data['sub_menu'] = '';
+        $this->data['notify'] = Contact::where('status',0)->count();
+    }
     public function index(){
         $this->data['count'] = aboutUs::count();
         $this->data['about'] = aboutUs::get();

@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 use function redirect;
 use function unlink;
 use function view;
-
+use App\Contact;
 class SiteController extends Controller
 {
     public function __construct()
     {
+        $this->data['main_menu'] = 'Site';
+        $this->data['sub_menu'] = 'Site';
         $this->middleware('auth')->except('logout');
+        $this->data['notify'] = Contact::where('status',0)->count();
     }
     public function index()
     {

@@ -53,6 +53,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
+        $this->data['main_menu'] = '';
         return view('frontend.user.login',$this->data);
     }
     protected function guard()
