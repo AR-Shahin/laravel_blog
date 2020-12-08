@@ -37,7 +37,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('backend.slider.create');
+        return view('backend.slider.create',$this->data);
     }
 
     /**

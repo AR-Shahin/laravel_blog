@@ -35,15 +35,21 @@
                             <tbody>
                             @foreach($categories as $category)
                                 <tr>
+                                    @php
+                                        $count = App\Post::where('category_id',$category->id)->count()
+                                    @endphp
                                     <td>{{$i++}}</td>
                                     <td>{{$category->title}}</td>
                                     <td>
                                         <a type="button"  data-toggle="modal" data-target="#edit_{{$category->id}}" class="btn btn-primary btn-sm text-light"><i class="fa fa-edit"></i> Edit</a>
-                                        <form  action="{{route('category.destroy',$category->id)}}" class="d-inline del_form" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button id="delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
-                                        </form>
+
+                                        @if($count == 0)
+                                            <form  action="{{route('category.destroy',$category->id)}}" class="d-inline del_form" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button id="delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -64,7 +70,7 @@
                         <label for="">Title</label>
                         <div class="form-group">
                             <input type="text" class="form-control"  name="title" placeholder="Category Title">
-                      <span class="text-danger">{{($errors->has('title')) ? ($errors->first('title')) : ' '}}</span>
+                            <span class="text-danger">{{($errors->has('title')) ? ($errors->first('title')) : ' '}}</span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Category</button>

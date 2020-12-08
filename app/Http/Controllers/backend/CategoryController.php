@@ -44,7 +44,8 @@ class CategoryController extends Controller
     }
     public function show($id)
     {
-        $del = Category::find($id)->delete();
+
+        $del = Category::findorFail($id)->delete();
         if($del){
             return redirect()->back();
         }
@@ -70,6 +71,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-
+        return $id;
     }
 }

@@ -13,7 +13,7 @@ Route::get('blog','frontend\BlogController@index')->name('blog');
 Route::get('single-post/{slug?}','frontend\BlogController@singlePost')->name('single.post');
 //Route::get('log','frontend\UserController@logout')->name('logout');
 
-Route::get('category/{cat_name}','frontend\BlogController@categoryWisePost')->name('cat.post');
+Route::get('category-wise/{cat_name}','frontend\BlogController@categoryWisePost')->name('cat.post');
 Route::get('tag/{tag_name}','frontend\BlogController@tagWisePost')->name('tag.post');
 
 
@@ -98,5 +98,10 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('admin/promote/{id}','backend\AdminController@promoteAdmin')->name('admin.promote');
     Route::get('admin/demote/{id}','backend\AdminController@demoteAdmin')->name('admin.demote');
     Route::get('admin/delete/{id}','backend\AdminController@deleteAdmin')->name('admin.delete');
+
+
+    #contact routes
+    Route::get('contact/index','backend\ContactController@index')->name('contact.index');
+    Route::get('contact/seen/{id}','backend\ContactController@seenMail')->name('contact.seen');
 
 });

@@ -91,6 +91,18 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item @if($main_menu == 'Contact') active @endif">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Contact" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>About</span>
+        </a>
+        <div id="Contact" class="collapse @if($main_menu == 'Contact') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item @if($main_menu == 'Contact') active @endif" href="{{route('contact.index')}}">Contact</a>
+            </div>
+        </div>
+    </li>
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

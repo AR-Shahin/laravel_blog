@@ -69,13 +69,16 @@ class BlogController extends Controller
     }
 
     public function tagWisePost($tag){
-        $id = Tag::where('tag',$tag)->pluck('id');
-        $this->data['posts'] = DB::table('posts')
+        $id = Tag::where('tag',$tag)->pluck('id')->first();
+
+      return  $this->data['posts'] = DB::table('posts')
             // ->join('tags', 'tags.post_id', '=', 'posts.id')
             ->join('tags', 'posts.id', '=', 'tags.post_id')
             ->select('posts.*')
             ->where('tags.id',$id)
             ->latest()->paginate(6);
+
+
         return view('frontend.tag_wise_post',$this->data);
     }
 }
