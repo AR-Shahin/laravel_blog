@@ -55,8 +55,8 @@ class ContactController extends Controller
                 $mail->subject('Thanks for contact us');
             });
 
-            $this->setSuccessMessageFront('Your mail has been sent!');
-            return redirect()->back();
+            //$this->setSuccessMessageFront('Your mail has been sent!');
+            return redirect()->back()->with('success','Your mail has been sent!');
         }
 
         return $request->all();

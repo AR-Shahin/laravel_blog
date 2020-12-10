@@ -77,8 +77,8 @@ class PostController extends Controller
                 $tag->tag = strtoupper($t);
                 $tag->save();
             }
-            $this->setSuccessMessage('Post added successfully!');
-            return redirect()->back();
+            //$this->setSuccessMessage('Post added successfully!');
+            return redirect()->back()->with('success','Post added successfully!');
         }
     }
 
@@ -86,15 +86,15 @@ class PostController extends Controller
         $up = Post::findorFail($id)->update([
             'status' => 0
         ]);
-        $this->setSuccessMessage('Post Inactive Successfully!');
-        return redirect()->back();
+       // $this->setSuccessMessage('Post Inactive Successfully!');
+        return redirect()->back()->with('success','Post Inactive successfully!');
     }
     public function ActivePost($id){
         $up = Post::findorFail($id)->update([
             'status' => 1
         ]);
-        $this->setSuccessMessage('Post Active Successfully!');
-        return redirect()->back();
+        //$this->setSuccessMessage('Post Active Successfully!');
+        return redirect()->back()->with('success','Post Active successfully!');
     }
 
     public function show($id){

@@ -11,6 +11,7 @@ use App\SiteIdentity;
 use App\SocialLink;
 use Illuminate\Support\Facades\DB;
 use const PHP_OS_FAMILY;
+use function view;
 
 class BlogController extends Controller
 {
@@ -71,14 +72,57 @@ class BlogController extends Controller
     public function tagWisePost($tag){
         $id = Tag::where('tag',$tag)->pluck('id')->first();
 
-      return  $this->data['posts'] = DB::table('posts')
+        return  $this->data['posts'] = DB::table('posts')
             // ->join('tags', 'tags.post_id', '=', 'posts.id')
             ->join('tags', 'posts.id', '=', 'tags.post_id')
             ->select('posts.*')
             ->where('tags.id',$id)
             ->latest()->paginate(6);
-
-
         return view('frontend.tag_wise_post',$this->data);
+    }
+
+    public function fetchPostForAjax(Request $request){
+        if($request->ajax()) {
+            $posts = Post::where('title', 'LIKE', '%'.$request->name.'%')
+                ->get();
+            $output = '';
+            if (count($posts)>0) {
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+                foreach ($posts as $post){
+
+                    $output .= '<li class="list-group-item">'.$post->slug.'</li>';
+                }
+                $output .= '</ul>';
+            }
+            else {
+                $output .= '<li class="list-group-item">'.'No results'.'</li>';
+            }
+            return $output;
+        }
+    }
+
+
+    public function searchPostForAjax(Request $request){
+        $this->data['post'] = Post::with('category','admin','tags','comments')->where('slug',$request->slug)
+            ->where('status',1)->first();
+
+        if($this->data['post'] == ''){
+            $this->data['error'] = $request->slug;
+            return view('frontend.404',$this->data);
+        }
+        Post::where('slug',$request->slug)->increment('count');
+        $this->data['categories'] = Category::with('countTotalPost')->latest()->get();
+        $this->data['tags'] = Tag::all()->unique('tag');
+        $this->data['post'] = Post::with('category','admin','tags','comments')->where('slug',$request->slug)
+            ->where('status',1)->first();
+
+        $this->data['Rposts'] = Post::where('category_id',$this->data['post']->category_id)
+            ->where('id' ,'!=',$this->data['post']->id)
+            ->take(3)
+            ->where('status',1)
+            ->inRandomOrder()
+            ->get();
+
+        return view('frontend.single_post',$this->data);
     }
 }

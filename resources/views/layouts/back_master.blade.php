@@ -63,7 +63,7 @@
         </div>
     </div>
 
-
+    @include('sweetalert::alert')
 
 
 @stop

@@ -16,9 +16,9 @@ class HomeController extends Controller
     public function index(){
         $this->data['main_menu'] = 'Home';
         $this->data['sliders'] = Slider::where('status',1)->latest()->get();
-        $this->data['about'] = aboutUs::get()->first();
-        $this->data['site'] = SiteIdentity::get()->first();
-        $this->data['link'] = SocialLink::get()->first();
+        $this->data['about'] = aboutUs::first();
+        $this->data['site'] = SiteIdentity::first();
+        $this->data['link'] = SocialLink::first();
         $this->data['posts'] = Post::with('category','tags','admin')
             ->where('status',1)
             ->inRandomOrder()
@@ -39,8 +39,13 @@ class HomeController extends Controller
             ->take(3)
             ->inRandomOrder()
             ->get();
-       // return $this->data;
+        // return $this->data;
         return view('frontend.home',$this->data);
+    }
+
+    public function fetchPostForAjax(Request $request)
+    {
+        return Post::all();
     }
 }
 

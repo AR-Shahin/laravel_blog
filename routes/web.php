@@ -105,3 +105,7 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('contact/seen/{id}','backend\ContactController@seenMail')->name('contact.seen');
 
 });
+
+
+Route::get('ajax/search','frontend\BlogController@fetchPostForAjax')->name('ajax');
+Route::post('search/post','frontend\BlogController@searchPostForAjax')->name('search.post');

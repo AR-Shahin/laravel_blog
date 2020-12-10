@@ -1,5 +1,9 @@
 $(document).ready(function () {
-
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 $('#delete_swal').on('click',function (e) {
     e.preventDefault();
 
@@ -47,4 +51,5 @@ $('#delete_swal').on('click',function (e) {
         }
     })
     });
+
 });

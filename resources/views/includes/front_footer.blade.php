@@ -71,5 +71,6 @@
 <script src="{{asset('frontend')}}/js/wow.min.js"></script>
 <script src="{{asset('frontend')}}/js/front.js"></script>
 <script src="{{asset('frontend')}}/js/custom.js"></script>
+<script src="{{asset('asset')}}/ajax.js"></script>
 </body>
 </html>

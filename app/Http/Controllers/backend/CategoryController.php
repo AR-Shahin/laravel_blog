@@ -17,6 +17,7 @@ class CategoryController extends Controller
         $this->data['main_menu'] = 'Post';
         $this->data['sub_menu'] = 'Cat';
         $this->data['notify'] = Contact::where('status',0)->count();
+
     }
     /**
      * Display a listing of the resource.
@@ -38,8 +39,8 @@ class CategoryController extends Controller
         $cat->title = ucwords($request->title);
         $cat->slug = Str::slug($request->title,'-');
         if($cat->save()){
-            $this->setSuccessMessage('Category Added Successfully!');
-            return redirect()->back();
+           // $this->setSuccessMessage('Category Added Successfully!');
+            return redirect()->back()->with('toast_success', 'Category Created Successfully!');
         }
     }
     public function show($id)
@@ -58,8 +59,8 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->title,'-')
         ]);
         if($update){
-            $this->setSuccessMessage('Category Updated Successfully!');
-            return redirect()->back();
+           // $this->setSuccessMessage('Category Updated Successfully!');
+            return redirect()->back()->with('success', 'Category Updated Successfully!');
         }
     }
 

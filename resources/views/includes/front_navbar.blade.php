@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title','Laravel Blog Website') | Laravel Blog Website </title>
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -37,16 +38,21 @@
                 <div class="close-btn"><i class="icon-close"></i></div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8">
-                        <form action="#">
+                        <form action="{{route('search.post')}}"  method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="search" name="search" id="search" placeholder="What are you looking for?">
+                                <input type="search" name="slug" id="search__blog" placeholder="What are you looking for?">
                                 <button type="submit" class="submit"><i class="icon-search-1"></i></button>
                             </div>
                         </form>
+                        <div id="post__list">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <div class="container">
             <!-- Navbar Brand -->
             <div class="navbar-header d-flex align-items-center justify-content-between">

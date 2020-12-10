@@ -94,8 +94,8 @@
 
     <li class="nav-item @if($main_menu == 'Contact') active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Contact" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>About</span>
+            <i class="fa fa-envelope"></i>
+            <span>Contacts</span>
         </a>
         <div id="Contact" class="collapse @if($main_menu == 'Contact') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

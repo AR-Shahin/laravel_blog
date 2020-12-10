@@ -48,10 +48,12 @@
                     <header>
                         <h3 class="h6">Search the blog</h3>
                     </header>
-                    <form action="#" class="search-form">
+                    <form action="{{route('search.post')}}" class="search-form" method="post">
+                        @csrf
                         <div class="form-group">
-                            <input type="search" placeholder="What are you looking for?">
+                            <input type="search" placeholder="What are you looking for?" id="search_blog" name="slug" required>
                             <button type="submit" class="submit"><i class="icon-search"></i></button>
+                            <div id="post_list" class="mt-2"></div>
                         </div>
                     </form>
                 </div>
