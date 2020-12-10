@@ -4,9 +4,11 @@ namespace App\Http\Controllers\backend;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use function GuzzleHttp\Psr7\_parse_request_uri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use function redirect;
+use function response;
 use function ucwords;
 use function view;
 use App\Contact;
@@ -39,7 +41,7 @@ class CategoryController extends Controller
         $cat->title = ucwords($request->title);
         $cat->slug = Str::slug($request->title,'-');
         if($cat->save()){
-           // $this->setSuccessMessage('Category Added Successfully!');
+            // $this->setSuccessMessage('Category Added Successfully!');
             return redirect()->back()->with('toast_success', 'Category Created Successfully!');
         }
     }
@@ -59,7 +61,7 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->title,'-')
         ]);
         if($update){
-           // $this->setSuccessMessage('Category Updated Successfully!');
+            // $this->setSuccessMessage('Category Updated Successfully!');
             return redirect()->back()->with('success', 'Category Updated Successfully!');
         }
     }
@@ -73,5 +75,15 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         return $id;
+    }
+
+    public function checkCategoryForAjax(Request $request){
+        $count = Category::where('title',$request->title)->first();
+
+        if($count){
+            return '<span class="text-danger"><b>'.$request->title.'</b> is not available!</span>';
+        }else{
+            return '<b class="text-success"><b>'.$request->title.'</b> is Available!</span>';
+        }
     }
 }

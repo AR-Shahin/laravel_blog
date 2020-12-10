@@ -69,8 +69,9 @@
                         @csrf
                         <label for="">Title</label>
                         <div class="form-group">
-                            <input type="text" class="form-control"  name="title" placeholder="Category Title">
+                            <input type="text" class="form-control" name="title" placeholder="Category Title" id="cat_name">
                             <span class="text-danger">{{($errors->has('title')) ? ($errors->first('title')) : ' '}}</span>
+                            <div id="response"></div>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Category</button>
@@ -90,7 +91,6 @@
     <script src="{{asset('backend')}}/js/demo/datatables-demo.js"></script>
 
 @stop
-
 @foreach($categories as $category)
     <!-- Modal -->
     <div class="modal fade" id="edit_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

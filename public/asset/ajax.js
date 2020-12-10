@@ -40,4 +40,19 @@ $(document).ready(function(){
         $('#post__list').html("");
     });
 
+    $('#cat_name').blur(function () {
+       var title = $(this).val();
+       if(title != ''){
+           $.ajax({
+               url : "cat_check",
+               type:'GET',
+               data:{'title': title},
+               success: function (data) {
+                   $('#response').html(data);
+                   console.log(data)
+               }
+           })
+       }
+    })
+
 });

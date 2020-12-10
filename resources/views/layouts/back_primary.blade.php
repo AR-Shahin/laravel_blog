@@ -36,6 +36,7 @@
 {{--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>--}}
 <script src="{{asset('asset')}}/swal.js"></script>
 <script src="{{asset('asset')}}/custom.js"></script>
+<script src="{{asset('asset')}}/ajax.js"></script>
 
 @yield('scripts')
 </body>

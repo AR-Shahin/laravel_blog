@@ -107,5 +107,6 @@ Route::group(['middleware' => 'auth'],function (){
 });
 
 
+Route::get('cat_check','backend\CategoryController@checkCategoryForAjax')->name('category.ajax');
 Route::get('ajax/search','frontend\BlogController@fetchPostForAjax')->name('ajax');
 Route::post('search/post','frontend\BlogController@searchPostForAjax')->name('search.post');
