@@ -47,7 +47,7 @@
                                             <div class="avatar"><img src="{{asset($post->admin->image)}}" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>{{($post->admin->name)}}</span></div></a>
                                         <div class="date"><i class="icon-clock"></i> {{($post->created_at->diffForHumans())}}</div>
-                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                        <div class="comments"><i class="icon-comment"></i>{{$post->comments->count()}}</div>
                                     </footer>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                             <div class="avatar"><img src="{{asset($post->admin->image)}}" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>{{$post->admin->name}}</span></div></a>
                                         <div class="date"><i class="icon-clock"></i> {{($post->created_at->diffForHumans())}}</div>
-                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                        <div class="comments"><i class="icon-comment"></i>{{$post->comments->count()}}</div>
                                     </footer>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
         </div>
     </section>
     <!-- Divider Section-->
-    <section style="background: url({{asset('frontend')}}/img/divider-bg.jpg); background-size: cover; background-position: center bottom" class="divider">
+    <section style="background: url({{asset('frontend')}}/img.jpg); background-size: cover; background-position: center bottom" class="divider">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">

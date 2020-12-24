@@ -38,7 +38,7 @@ class BlogController extends Controller
             ->take(3)
             ->latest()
             ->get();
-        $this->data['categories'] = Category::with('countTotalPost')->latest()->get();
+        $this->data['categories'] = Category::has('countTotalPost')->with('countTotalPost')->latest()->get();
         $this->data['tags'] = Tag::all()->unique('tag');
         return view('frontend.blog',$this->data);
     }

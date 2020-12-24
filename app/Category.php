@@ -11,4 +11,5 @@ class Category extends Model
     public function countTotalPost(){
         return $this->hasMany(Post::class);
     }
+
 }
