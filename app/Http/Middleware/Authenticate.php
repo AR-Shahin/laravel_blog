@@ -15,11 +15,11 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (!Auth::guard('user')->check()) {
-            return route('users.login');
-        }
-        elseif (!Auth::guard('web')->check()) {
-            return route('control_panel');
-        }
+//        if (!Auth::guard('user')->check()) {
+//            return route('users.login');
+//        }
+//        elseif (!Auth::guard('web')->check()) {
+//            return route('control_panel');
+//        }
     }
 }

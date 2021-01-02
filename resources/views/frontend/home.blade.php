@@ -35,7 +35,7 @@
             @foreach($posts as $post)
                 @if($i++ % 2 ==0)
                     <div class="row d-flex align-items-stretch">
-                        <div class="text col-lg-7">
+                        <div class="text col-lg-7"  style="padding: 10px;box-shadow: 3px 5px 10px #ccc">
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
@@ -57,7 +57,7 @@
                 @else
                     <div class="row d-flex align-items-stretch">
                         <div class="image col-lg-5"><img src="{{asset($post->image)}}" alt="..."></div>
-                        <div class="text col-lg-7">
+                        <div class="text col-lg-7"  style="box-shadow: 3px 5px 10px #ccc">
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">

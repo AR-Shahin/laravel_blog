@@ -9,7 +9,7 @@
                     <div class="row">
                         <!-- post -->
                         @foreach($posts as $post)
-                            <div class="post col-xl-6">
+                            <div class="post col-xl-6" style="padding: 10px;box-shadow: 3px 5px 10px #ccc">
                                 <div class="post-thumbnail"><a href="{{route('single.post',$post->slug)}}"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
