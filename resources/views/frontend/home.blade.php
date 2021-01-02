@@ -80,18 +80,19 @@
         <!-- Post        -->
         </div>
     </section>
-    <!-- Divider Section-->
-    <section style="background: url({{asset('frontend')}}/img.jpg); background-size: cover; background-position: center bottom" class="divider">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2><a href="#" class="hero-link">View More</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{--<!-- Divider Section-->--}}
+    {{--<section style="background: url({{asset('frontend')}}/img.jpg); background-size: cover; background-position: center bottom" class="divider">--}}
+        {{--<div class="container">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-md-7">--}}
+                    {{--<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2><a href="#" class="hero-link">View More</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <!-- Latest Posts -->
-    <section class="latest-posts">
+    <hr>
+    <section class="latest-posts pt-0">
         <div class="container">
             <header>
                 <h2>Latest from the blog</h2>
@@ -135,25 +136,25 @@
             </div>
         </div>
     </section>
-    <!-- Gallery Section-->
-    <section class="gallery no-padding">
-        <div class="row">
-            <div class="mix col-lg-3 col-md-3 col-sm-6">
-                <div class="item"><a href="{{asset('frontend')}}/img/gallery-1.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-1.jpg" alt="..." class="img-fluid">
-                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
-            </div>
-            <div class="mix col-lg-3 col-md-3 col-sm-6">
-                <div class="item"><a href="{{asset('frontend')}}/img/gallery-2.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-2.jpg" alt="..." class="img-fluid">
-                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
-            </div>
-            <div class="mix col-lg-3 col-md-3 col-sm-6">
-                <div class="item"><a href="{{asset('frontend')}}/img/gallery-3.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-3.jpg" alt="..." class="img-fluid">
-                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
-            </div>
-            <div class="mix col-lg-3 col-md-3 col-sm-6">
-                <div class="item"><a href="{{asset('frontend')}}/img/gallery-4.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-4.jpg" alt="..." class="img-fluid">
-                        <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
-            </div>
-        </div>
-    </section>
+    {{--<!-- Gallery Section-->--}}
+    {{--<section class="gallery no-padding">--}}
+        {{--<div class="row">--}}
+            {{--<div class="mix col-lg-3 col-md-3 col-sm-6">--}}
+                {{--<div class="item"><a href="{{asset('frontend')}}/img/gallery-1.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-1.jpg" alt="..." class="img-fluid">--}}
+                        {{--<div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>--}}
+            {{--</div>--}}
+            {{--<div class="mix col-lg-3 col-md-3 col-sm-6">--}}
+                {{--<div class="item"><a href="{{asset('frontend')}}/img/gallery-2.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-2.jpg" alt="..." class="img-fluid">--}}
+                        {{--<div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>--}}
+            {{--</div>--}}
+            {{--<div class="mix col-lg-3 col-md-3 col-sm-6">--}}
+                {{--<div class="item"><a href="{{asset('frontend')}}/img/gallery-3.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-3.jpg" alt="..." class="img-fluid">--}}
+                        {{--<div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>--}}
+            {{--</div>--}}
+            {{--<div class="mix col-lg-3 col-md-3 col-sm-6">--}}
+                {{--<div class="item"><a href="{{asset('frontend')}}/img/gallery-4.jpg" data-fancybox="gallery" class="image"><img src="{{asset('frontend')}}/img/gallery-4.jpg" alt="..." class="img-fluid">--}}
+                        {{--<div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
 @stop
