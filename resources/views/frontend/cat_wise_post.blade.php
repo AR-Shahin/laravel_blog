@@ -14,9 +14,9 @@
                         </div>
                         @endif
                         @foreach($posts as $post)
-                            <div class="post col-xl-4 mb-3" style="border: 1px solid ; padding: 10px">
+                            <div class="post col-xl-4 mb-3" style="padding: 10px;box-shadow: 3px 5px 10px #ccc">
                                 <div class="post-thumbnail"><a href="{{route('single.post',$post->slug)}}"><img src="{{asset($post->image)}}" alt="..." class="img-fluid"></a></div>
-                                <div class="post-details">
+                                <div class="post-details p-1">
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">{{$post->created_at->format('d F | Y')}}</div>
                                         <div class="category"><a href="#">{{$post->category->title}}</a></div>
