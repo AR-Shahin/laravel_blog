@@ -69,18 +69,6 @@ class BlogController extends Controller
         return view('frontend.cat_wise_post',$this->data);
     }
 
-    public function tagWisePost($tag){
-        $id = Tag::where('tag',$tag)->pluck('id')->first();
-
-        return  $this->data['posts'] = DB::table('posts')
-            // ->join('tags', 'tags.post_id', '=', 'posts.id')
-            ->join('tags', 'posts.id', '=', 'tags.post_id')
-            ->select('posts.*')
-            ->where('tags.id',$id)
-            ->latest()->paginate(6);
-        return view('frontend.tag_wise_post',$this->data);
-    }
-
     public function fetchPostForAjax(Request $request){
         if($request->ajax()) {
             $posts = Post::where('title', 'LIKE', '%'.$request->name.'%')
@@ -124,5 +112,12 @@ class BlogController extends Controller
             ->get();
 
         return view('frontend.single_post',$this->data);
+    }
+
+
+
+    public function tagWisePost($tag){
+    
+        return redirect()->back();
     }
 }
